@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     private Rigidbody rb;
     
-
-
     void Start()
     {
         count = 0;
@@ -44,7 +42,6 @@ public class PlayerController : MonoBehaviour
             count = count + 1;
             SetCountText();
        }
-       
     }
     
     void SetCountText() 
@@ -53,6 +50,7 @@ public class PlayerController : MonoBehaviour
        if (count >= 12)
        {
             winTextObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
        }
    }
 
