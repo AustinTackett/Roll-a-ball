@@ -8,10 +8,20 @@ public class PlayerController : MonoBehaviour
     private float movementY;
     public float speed = 0;
     private int count;
-    public TextMeshProUGUI countText;
-    public GameObject winTextObject;
     private Rigidbody rb;
     
+    public TextMeshProUGUI countText;
+    public GameObject winTextObject;
+    private AudioSource pickUpAudioSource;
+    public GameObject backgroundMusicObject;
+
+    
+    public void Awake()
+    {
+        pickUpAudioSource = GetComponent<AudioSource>();
+
+    }
+
     void Start()
     {
         count = 0;
@@ -40,18 +50,22 @@ public class PlayerController : MonoBehaviour
        {
             other.gameObject.SetActive(false);
             count = count + 1;
+            pickUpAudioSource.Play();
             SetCountText();
+            
+            if (count == 12)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("Enemy"));
+                winTextObject.SetActive(true);
+                backgroundMusicObject.GetComponent<AudioSource>().Stop();
+                winTextObject.gameObject.GetComponent<AudioSource>().Play();
+            }
        }
     }
     
     void SetCountText() 
    {
        countText.text =  "Count: " + count.ToString();
-       if (count >= 12)
-       {
-            winTextObject.SetActive(true);
-            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
-       }
    }
 
     private void OnCollisionEnter(Collision collision)
@@ -61,6 +75,9 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject); 
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            backgroundMusicObject.GetComponent<AudioSource>().Stop();
+            collision.gameObject.GetComponent<AudioSource>().Play();
+            
         }
     }
 
