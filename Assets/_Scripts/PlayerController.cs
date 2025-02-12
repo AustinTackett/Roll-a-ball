@@ -77,7 +77,11 @@ public class PlayerController : MonoBehaviour
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             backgroundMusicObject.GetComponent<AudioSource>().Stop();
             collision.gameObject.GetComponent<AudioSource>().Play();
-            
+        }
+        if (collision.gameObject.CompareTag("Walls"))
+        {
+            Debug.Log("walls");
+            collision.gameObject.GetComponentInParent<AudioSource>().Play();
         }
     }
 
