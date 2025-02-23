@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject pickupVfxObject;
+    public GameObject explosionVfxObject;
     private AudioSource pickUpAudioSource;
     public GameObject backgroundMusicObject;
 
@@ -51,6 +53,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             pickUpAudioSource.Play();
+            Instantiate(pickupVfxObject, transform.position, Quaternion.identity);
             SetCountText();
             
             if (count == 12)
@@ -77,6 +80,8 @@ public class PlayerController : MonoBehaviour
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             backgroundMusicObject.GetComponent<AudioSource>().Stop();
             collision.gameObject.GetComponent<AudioSource>().Play();
+            var explosionVfx = Instantiate(explosionVfxObject, transform.position, Quaternion.identity);
+            Destroy(explosionVfx);
         }
         if (collision.gameObject.CompareTag("Walls"))
         {
