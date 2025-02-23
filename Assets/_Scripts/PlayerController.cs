@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
             backgroundMusicObject.GetComponent<AudioSource>().Stop();
             collision.gameObject.GetComponent<AudioSource>().Play();
             var explosionVfx = Instantiate(explosionVfxObject, transform.position, Quaternion.identity);
-            Destroy(explosionVfx);
         }
         if (collision.gameObject.CompareTag("Walls"))
         {

@@ -243,10 +243,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bb6b57ab0fd5a497c99ffc58096655f8, type: 3}
-  m_Resource: {fileID: 8300000, guid: bb6b57ab0fd5a497c99ffc58096655f8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 78552afcf04524c108dd5ad649ad04dc, type: 3}
+  m_Resource: {fileID: 8300000, guid: 78552afcf04524c108dd5ad649ad04dc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3400,6 +3400,8 @@ MonoBehaviour:
   speed: 10
   countText: {fileID: 1136263479}
   winTextObject: {fileID: 1427643334}
+  pickupVfxObject: {fileID: 9163842254569548763, guid: fdb1ffad1b27547ceb1e6850752e6b86, type: 3}
+  explosionVfxObject: {fileID: 7095049530967910764, guid: 274e94bc86f6b42488a86a98142a44ef, type: 3}
   backgroundMusicObject: {fileID: 109939679}
 --- !u!114 &1640405796
 MonoBehaviour:
