@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
     public float speed = 0;
+    public float trailThreshold;
     private int count;
     private Rigidbody rb;
     
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     public GameObject pickupVfxObject;
     public GameObject explosionVfxObject;
+    public GameObject victoryVfxObject;
+    private ParticleSystem trailParticlesSystem;
     private AudioSource pickUpAudioSource;
     public GameObject backgroundMusicObject;
 
@@ -21,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         pickUpAudioSource = GetComponent<AudioSource>();
-
+        trailParticlesSystem = GetComponentInChildren<ParticleSystem>();
     }
 
     void Start()
@@ -43,7 +46,19 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
-
+        if (rb.linearVelocity.magnitude > trailThreshold && !trailParticlesSystem.isPlaying)
+        {
+            //Debug.Log("Speed");
+            trailParticlesSystem.Play();
+        }
+        else if (rb.linearVelocity.magnitude < trailThreshold && trailParticlesSystem.isPlaying)
+        {
+            //Debug.Log("Stop");
+            trailParticlesSystem.Stop();
+        }
+        Debug.Log(trailParticlesSystem.isPlaying);
+        
+        
     }
 
     void OnTriggerEnter(Collider other)
@@ -53,13 +68,16 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             count = count + 1;
             pickUpAudioSource.Play();
-            Instantiate(pickupVfxObject, transform.position, Quaternion.identity);
+            var pickupVfx = Instantiate(pickupVfxObject, transform.position, Quaternion.identity);
+            Destroy(pickupVfx, 3);
             SetCountText();
             
             if (count == 12)
             {
                 Destroy(GameObject.FindGameObjectWithTag("Enemy"));
                 winTextObject.SetActive(true);
+                var victoryVfx = Instantiate(victoryVfxObject, transform.position, Quaternion.identity);
+                Destroy(victoryVfx, 3);
                 backgroundMusicObject.GetComponent<AudioSource>().Stop();
                 winTextObject.gameObject.GetComponent<AudioSource>().Play();
             }
@@ -81,6 +99,7 @@ public class PlayerController : MonoBehaviour
             backgroundMusicObject.GetComponent<AudioSource>().Stop();
             collision.gameObject.GetComponent<AudioSource>().Play();
             var explosionVfx = Instantiate(explosionVfxObject, transform.position, Quaternion.identity);
+            Destroy(explosionVfx, 3);
         }
         if (collision.gameObject.CompareTag("Walls"))
         {
