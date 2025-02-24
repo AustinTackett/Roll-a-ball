@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(GameObject.FindGameObjectWithTag("Enemy"));
                 winTextObject.SetActive(true);
-                var victoryVfx = Instantiate(victoryVfxObject, transform.position, Quaternion.identity);
+                var victoryVfx = Instantiate(victoryVfxObject, transform,  worldPositionStays:false);
                 Destroy(victoryVfx, 3);
                 backgroundMusicObject.GetComponent<AudioSource>().Stop();
                 winTextObject.gameObject.GetComponent<AudioSource>().Play();
