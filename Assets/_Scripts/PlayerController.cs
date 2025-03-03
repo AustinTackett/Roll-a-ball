@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PickUp")) 
-       {
+        {
             other.gameObject.SetActive(false);
             count = count + 1;
             pickUpAudioSource.Play();
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
                 backgroundMusicObject.GetComponent<AudioSource>().Stop();
                 winTextObject.gameObject.GetComponent<AudioSource>().Play();
             }
-       }
+        }
     }
     
     void SetCountText() 
