@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject); 
             winTextObject.gameObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            collision.gameObject.GetComponentInChildren<Animator>().SetFloat("speed_f", 0);
             backgroundMusicObject.GetComponent<AudioSource>().Stop();
             collision.gameObject.GetComponent<AudioSource>().Play();
             var explosionVfx = Instantiate(explosionVfxObject, transform.position, Quaternion.identity);
