@@ -9,6 +9,4 @@ public class ButtonSelectedOnStart : MonoBehaviour
         button = GetComponent<Button>();
         button.Select();
     }
-
-
 }
