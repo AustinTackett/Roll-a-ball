@@ -5194,6 +5194,99 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1896961180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &881226939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6704146
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6704146
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.22482054
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.22482054
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640936508863095740, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -37.077
+      objectReference: {fileID: 0}
+    - target: {fileID: 5416769898957076742, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_Name
+      value: StreetLamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581155398559939030, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2192522416602670437, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4654326471163607330, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 881226941}
+  m_SourcePrefab: {fileID: 100100000, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+--- !u!1 &881226940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4654326471163607330, guid: c1d5a73c7c43a7444a57103e212e69be, type: 3}
+  m_PrefabInstance: {fileID: 881226939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &881226941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881226940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &919816380
 GameObject:
   m_ObjectHideFlags: 0
@@ -10983,3 +11076,4 @@ SceneRoots:
   - {fileID: 109939681}
   - {fileID: 596606506}
   - {fileID: 70095863}
+  - {fileID: 881226939}
