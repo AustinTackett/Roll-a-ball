@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float trailThreshold;
     private int count;
     private Rigidbody rb;
+    private Vector3 targetPos;
+    [SerializeField] private bool isMoving = false;
     
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
@@ -42,10 +44,55 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y; 
     }
 
+    private void Update()  
+    {
+        if (Input.GetMouseButton(0)) // Check if left mouse button is held down
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
+            Debug.DrawRay(ray.origin, ray.direction * 50, Color.yellow);
+            
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    targetPos = hit.point;
+                    isMoving = true;
+                }
+            }
+            else
+            {
+                isMoving = false;
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
+        // Move player towards mouse
+        if (isMoving)
+        {
+            Vector3 direction = targetPos - rb.position;
+            direction.Normalize();
+            rb.AddForce(direction * speed);
+        }
+
+        // Stop moving if player is at target position
+        if (Vector3.Distance(rb.position, targetPos) < 0.5f)
+        {
+            isMoving = false;
+        }
+
+
+
+        // Handle Keyboard inputs set in OnMove()
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
+
+
+
+        // Trail logic
         if (rb.linearVelocity.magnitude > trailThreshold && !trailParticlesSystem.isPlaying)
         {
             //Debug.Log("Speed");
